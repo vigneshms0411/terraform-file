@@ -13,12 +13,22 @@ output "instance_private_ip" {
   value       = aws_instance.app_server.private_ip
 }
 
+output "instance_public_dns" {
+  description = "Public DNS of the EC2 instance"
+  value       = aws_instance.app_server.public_dns
+}
+
 output "security_group_id" {
   description = "ID of the security group"
   value       = aws_security_group.instance_sg.id
 }
 
-output "instance_public_dns" {
-  description = "Public DNS of the EC2 instance"
-  value       = aws_instance.app_server.public_dns
+output "region" {
+  description = "AWS Region"
+  value       = var.aws_region
+}
+
+output "nginx_url" {
+  description = "URL to access Nginx"
+  value       = "http://${aws_instance.app_server.public_ip}"
 }

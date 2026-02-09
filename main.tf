@@ -6,11 +6,10 @@ terraform {
     }
   }
   
-  backend "s3" {
-    bucket = "your-terraform-state-bucket"
-    key    = "jenkins-ec2/terraform.tfstate"
-    region = "ap-south-1"
-  }
+ variable "aws_region" {
+  description = "AWS region"
+  type        = string
+  default     = "ap-south-1"  # ← Change this to ap-south-1
 }
 
 provider "aws" {
